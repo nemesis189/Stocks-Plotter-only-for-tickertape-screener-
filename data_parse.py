@@ -25,6 +25,7 @@ for id in rowid:
     market_cap ,close_price ,pe ,growth5Y ,alpha ,beta = marcap[0].text, marcap[1].text, marcap[2].text, marcap[3].text, marcap[4].text, marcap[5].text 
     d = dict(
         name=name[idx],
+        abbr=id,
         market_cap = market_cap ,
         close_price = close_price ,
         pe = pe ,
@@ -41,7 +42,7 @@ for id in rowid:
 
 filename = 'processed_data.csv'
 with open(filename, 'w', newline='') as f:
-    w = csv.DictWriter(f,['name','market_cap' ,'close_price' ,'pe' ,'growth5Y' ,'alpha' ,'beta'])
+    w = csv.DictWriter(f,['name','abbr','market_cap' ,'close_price' ,'pe' ,'growth5Y' ,'alpha' ,'beta'])
     w.writeheader()
     for row in final_rows:
         w.writerow(row)
